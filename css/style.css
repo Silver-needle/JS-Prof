@@ -1,0 +1,40 @@
+.card-container {
+   display: flex;
+   justify-content: center;
+}
+
+.card {
+   margin: 3%;
+   padding-bottom: 200px;
+   position: relative;
+}
+
+.card-body {
+   padding-top: 90%;
+   position: absolute;
+   bottom: 0;
+}
+
+.product-price {
+   text-align: center;
+   font-size: 36px;
+   font-weight: 700;
+   color: #0f357a;
+   padding-bottom: 20px;
+}
+
+section {
+   box-sizing: border-box;
+	min-height: 100%;
+	padding-bottom: 90px;
+   margin-bottom: 20px;
+}
+
+footer {
+   text-align: center;
+   height: 60px;
+   background-color: #f8f9fb;
+   width:100%; 
+   position: absolute;
+   bottom:0;
+}
