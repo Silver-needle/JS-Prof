@@ -57,6 +57,11 @@ class GoodsList {
    fetchGoods() {
       this.items = goods;
    }
+   calculatePrice() {
+      this.items.reduce((prev, item) => {
+         return prev + item.price
+      }, 0)
+   }
    render() {
       const goods = this.items.map(item => {
          const goodItem = new GoodsItem(item);
