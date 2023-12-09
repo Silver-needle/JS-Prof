@@ -30,20 +30,29 @@ const goods = [
    }
 ];
 
+const GET_GOODS_ITEMS = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/catalogData.json';
+const GET_BASKET_GOODS_ITEMS = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/getBasket.json';
+
+function service(url, callback) {
+   xhr = new XMLHttpRequest();
+   xhr.open('GET', url);
+   xhr.send();
+   xhr.onload = () => {
+     callback(JSON.parse(xhr.response))
+   }
+ }
+
 class GoodsItem {
-   constructor({ title = '', id = 0, price = 0, description = '', img = "./css/img/5.jpg" }) {
-      this.id = id;
-      this.title = title;
-      this.price = price;
-      this.description = description;
-      this.img = img;
+   constructor({ product_name = '', price = 0 }) {
+    this.product_name = product_name;
+    this.price = price;
    }
    render() {
       return `
       <div class="card" style="width: 18rem;">
       <img src="${this.img}" class="card-img-top" style="padding-top: 20px;">
       <div class="card-body">
-         <h5 class="card-title">${this.title}</h5>
+         <h5 class="card-title">${this.product_name}</h5>
          <p class="card-text">${this.description}</p>
          <h3 class="product-price">${this.price} $</h3>
          <a href="#" class="btn btn-primary">Add to Cart</a>
@@ -54,12 +63,15 @@ class GoodsItem {
 }
 class GoodsList {
    items = [];
-   fetchGoods() {
-      this.items = goods;
+   fetchGoods(callback) {
+      service(GET_GOODS_ITEMS, (data) => {
+         this.items = data;
+         callback()
+      });
    }
    calculatePrice() {
-      this.items.reduce((prev, item) => {
-         return prev + item.price
+      return this.items.reduce((prev, { price }) => {
+         return prev + price;
       }, 0)
    }
    render() {
@@ -68,10 +80,11 @@ class GoodsList {
          return goodItem.render()
       }).join('');
 
-      document.querySelector('.card-container').innerHTML = goods;
+      document.querySelector('.goods-list').innerHTML = goods;
    }
 }
 
 const goodsList = new GoodsList();
-goodsList.fetchGoods();
-goodsList.render();
+goodsList.fetchGoods(() => {
+   goodsList.render();
+});
