@@ -24,12 +24,12 @@
           <img src="css/img/1.jpg" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
           Mesozoic_Era_tech
         </a>
-        <div class="search">
-          <input type="text" class="goods-search" v-model="search"/>
-          <button class="search-button" type="button" v-on:click="filterItems">Искать</button>
+        <div class="card-container" >
+          <input type="text" class="goods-search" style="margin-right: 10px; border-radius: 6px;" v-model="search"/>
+          <button class="btn btn-outline-secondary" type="button" v-on:click="filterItems">Искать</button>
        </div>
-        <button type="button" class="btn btn-outline-secondary cart-button"
-          style="padding-left: 40px; padding-right: 40px;">Cart</button>
+        <custom-button type="button" class="btn btn-outline-secondary cart-button" data-toggle="modal" data-target="#exampleModal"
+          style="padding-left: 40px; padding-right: 40px;" @click="setVisionCard">Cart</custom-button>
       </div>
     </nav>
   </header>
@@ -45,7 +45,28 @@
         </div>
      </div>
     </div>
+    <div v-if="!filteredItems.length">нет данных</div>
   </main>
+  <div class="modal" id="exampleModal" v-if="cardIsVision">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">В корзине</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="setVisionCard"></button>
+        </div>
+        <div class="modal-body">
+          <ul>
+            <li>position 1</li>
+            <li>position 2</li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="setVisionCard">Вернуться к покупкам</button>
+          <button type="button" class="btn btn-primary">В корзину</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <div>{{ calculatePrice }}</div>
   <footer>
     <p>See you</p>

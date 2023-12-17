@@ -45,15 +45,21 @@ function service(url) {
      data: {
        items: [],
        filteredItems: [],
-       search: ''
+       search: '',
+       cardIsVision: false
      },
      methods: {
-       fetchGoods() {
+      setVisionCard() {
+        this.cardIsVision = !this.cardIsVision
+      },
+      fetchGoods() {
+        setTimeout(() => {
          service(GET_GOODS_ITEMS).then((data) => {
-           this.items = data;
-           this.filteredItems = data;
-         });
-       },
+            this.items = data;
+            this.filteredItems = data;
+          });
+        }, 2000)
+      },
        filterItems() {
          this.filteredItems = this.items.filter(({ product_name }) => {
            return product_name.match(new RegExp(this.search, 'gui'))
