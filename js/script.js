@@ -46,12 +46,9 @@ function service(url) {
        items: [],
        filteredItems: [],
        search: '',
-       cardIsVision: false
+       isVisibleCart: false
      },
      methods: {
-      setVisionCard() {
-        this.cardIsVision = !this.cardIsVision
-      },
       fetchGoods() {
         setTimeout(() => {
          service(GET_GOODS_ITEMS).then((data) => {
@@ -64,6 +61,9 @@ function service(url) {
          this.filteredItems = this.items.filter(({ product_name }) => {
            return product_name.match(new RegExp(this.search, 'gui'))
          })
+       },
+       setVisibleCart() {
+         this.isVisibleCart = !this.isVisibleCart
        },
      },
      computed: {

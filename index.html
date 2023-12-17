@@ -29,7 +29,7 @@
           <button class="btn btn-outline-secondary" type="button" v-on:click="filterItems">Искать</button>
        </div>
         <custom-button type="button" class="btn btn-outline-secondary cart-button" data-toggle="modal" data-target="#exampleModal"
-          style="padding-left: 40px; padding-right: 40px;" @click="setVisionCard">Cart</custom-button>
+          style="padding-left: 40px; padding-right: 40px;" @click="setVisibleCart">Cart</custom-button>
       </div>
     </nav>
   </header>
@@ -47,12 +47,12 @@
     </div>
     <div v-if="!filteredItems.length">нет данных</div>
   </main>
-  <div class="modal" id="exampleModal" v-if="cardIsVision">
+  <div class="modal" id="exampleModal" v-if="isVisibleCart">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">В корзине</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="setVisionCard"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="setVisibleCart"></button>
         </div>
         <div class="modal-body">
           <ul>
@@ -61,7 +61,7 @@
           </ul>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="setVisionCard">Вернуться к покупкам</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="setVisibleCart">Вернуться к покупкам</button>
           <button type="button" class="btn btn-primary">В корзину</button>
         </div>
       </div>
