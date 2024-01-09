@@ -25,8 +25,10 @@
             Mesozoic_Era_tech
           </a>
           <div class="card-container">
-            <input type="text" class="goods-search" style="margin-right: 10px; border-radius: 6px;" v-model="search" />
-            <custom_btn v-on:click="filterItems">Искать</custom_btn>
+            <search @click="filteredItems"></search>
+            <custom_btn class="actions" data-toggle="modal" @click="filterItems">Искать</custom_btn>
+              
+            
           </div>
           <custom_btn class="actions" data-toggle="modal" data-target="#exampleModal" style="padding-left: 30px; padding-right: 30px;"
             @click="setVisibleCart">Корзина</custom_btn>
