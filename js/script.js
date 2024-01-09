@@ -80,7 +80,11 @@ function init() {
         </div>
     `
    });
-
+   Vue.component('search', {
+      template: `
+      <input type="text" class="goods-search" style="margin-right: 10px; border-radius: 6px;" v-model="$root.search" />
+    `
+   });
    const app = new Vue({
       el: '#root',
       data: {
