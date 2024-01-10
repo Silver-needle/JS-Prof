@@ -30,17 +30,29 @@ const goods = [
    }
 ];
 */
-const BASE_URL = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/';
-const GET_GOODS_ITEMS = `${BASE_URL}catalogData.json`
-const GET_BASKET_GOODS_ITEMS = `${BASE_URL}getBasket.json`
+const BASE_URL = 'http://localhost:8000/';
+const GET_GOODS_ITEMS = `${BASE_URL}goods`;
+// const GET_BASKET_GOODS_ITEMS = `${BASE_URL}getBasket.json`
 
 function service(url) {
    return fetch(url)
       .then((res) => res.json())
 }
-
 function init() {
-      Vue.component('basket', {
+   const CustomButton = Vue.component('custom-button', {
+     template: `
+       <button class="search-button" type="button" v-on:click="$emit('click')">
+          <slot></slot>
+       </button>
+     `
+   })
+const basketGoods = Vue.component('basket-goods', {
+   data() {
+     return {
+        basketGoodsItems: []
+     }
+   },
+
       template: `
         <div class="fixed-area">
            <div class="basket-card">
@@ -55,16 +67,13 @@ function init() {
               </div>
            </div>
         </div>
-      `
+        `,
+        mounted() {
+        }
     });
-   Vue.component('custom_btn', {
-      template: `
-      <button class="btn btn-outline-secondary" type="button" v-on:click="$emit('click')">
-      <slot></slot>
-      </button>
-    `
-   });
-   Vue.component('card', {
+
+
+   const goodsItem =Vue.component('card', {
       props: [
          'item'
       ],
@@ -93,6 +102,7 @@ function init() {
          search: '',
          isVisibleCart: false
       },
+      
       methods: {
          fetchGoods() {
             setTimeout(() => {
