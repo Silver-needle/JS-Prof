@@ -26,16 +26,16 @@
           </a>
           <div class="card-container">
             <search @click="filteredItems"></search>
-            <custom_btn class="actions" data-toggle="modal" @click="filterItems">Искать</custom_btn>
+            <custom_button class="actions" data-toggle="modal" @click="filterItems">Искать</custom_button>
           </div>
-          <custom_btn class="actions" data-toggle="modal" data-target="#exampleModal" style="padding-left: 30px; padding-right: 30px;"
-            @click="setVisibleCart">Корзина</custom_btn>
+          <custom_button class="actions" data-toggle="modal" data-target="#exampleModal" style="padding-left: 30px; padding-right: 30px;"
+            @click="setVisibleCart">Корзина</custom_button>
         </div>
       </nav>
     </header>
     <main>
       <div class="card-container">
-        <card v-for="item in filteredItems" :item="item"></card>
+        <basket-goods-item v-for="item in filteredItems" :item="item"></basket-goods-item>
       </div>
       <div v-if="!filteredItems.length">нет данных</div>
     </main>
