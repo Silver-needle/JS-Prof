@@ -9,7 +9,7 @@ module.exports = {
     path: path.resolve(__dirname, 'build'),
     clean: true
   },
-  
+
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
@@ -18,7 +18,7 @@ module.exports = {
   
   mode: 'development',
   devServer: {
-    static: './dist',
+    static: './build',
   },
   
   module: {

@@ -1,3 +1,3 @@
 export const fu = function () {
-   console.log('fu')
+   console.log('fu and fu')
 }
