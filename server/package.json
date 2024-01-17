@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "moment": "^2.30.1",
+    "node-static": "^0.7.11"
+  },
+  "name": "1.0.0",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Silver-needle/JS-Prof.git"
+  },
+  "author": "MS",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Silver-needle/JS-Prof/issues"
+  },
+  "homepage": "https://github.com/Silver-needle/JS-Prof#readme",
+  "description": ""
+}
