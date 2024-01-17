@@ -1,0 +1,10 @@
+* {
+   color:red;
+}
+
+#container {
+   width: 40px;
+   height: 40px;
+   background-image: url("./css/img/delete_icon.png");
+   background-size: contain;
+}
