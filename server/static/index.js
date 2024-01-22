@@ -40,16 +40,16 @@ function deleteBasketGood() {
   return getRawBasketGoods().then((basketGoods) => {
     basketGoods.map((basketGood) => {
       if (basketGood.id === _id) {
-return {
-  ...basketGood,
-  count: basketGood.count - 1
-}
-      }else {
+        return {
+          ...basketGood,
+          count: basketGood.count - 1
+        }
+      } else {
         return basketGood;
       }
     }).filter(({ count }) => count > 0);
   }).then(() => {
-return result;
+    return result;
   })
 }
 
@@ -101,16 +101,16 @@ app.put('/basket_goods', (req, res) => {
     getBasketGoods().then((data) => {
       res.send(data);
     });
-});
+  });
 
-app.delete('/basket_goods', (req, res) => {
-  deleteBasketGood(req.body.id).then(() => {
-    getBasketGoods().then((data) => {
-      res.send(data);
-    });
+  app.delete('/basket_goods', (req, res) => {
+    deleteBasketGood(req.body.id).then(() => {
+      getBasketGoods().then((data) => {
+        res.send(data);
+      });
+    })
+  });
+
+  app.listen('8000', () => {
+    console.log('server is starting!')
   })
-});
-
-app.listen('8000', () => {
-  console.log('server is starting!')
-})
